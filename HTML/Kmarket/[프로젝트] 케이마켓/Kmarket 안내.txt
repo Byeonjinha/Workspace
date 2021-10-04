@@ -1,0 +1,28 @@
+케이마켓(kmarket) 디자인 작업
+스토리보드 참고
+
+// main
+메인 : chhak.kr/kmarket/index.html
+
+// shop
+상품검색 : chhak.kr/kmarket/shop/search.html
+상품목록 : chhak.kr/kmarket/shop/list.html
+상품상세 : chhak.kr/kmarket/shop/view.html
+장바구니 : chhak.kr/kmarket/shop/cart.html
+주문결제 : chhak.kr/kmarket/shop/order.html
+주문완료 : chhak.kr/kmarket/shop/order-complete.html
+
+//member
+로그인 : chhak.kr/kmarket/member/login.html
+회원가입 : chhak.kr/kmarket/member/join.html
+약관동의 : chhak.kr/kmarket/member/signup.html
+회원가입 : chhak.kr/kmarket/member/register.html (일반회원)
+회원가입 : chhak.kr/kmarket/member/register-seller.html (판매회원)
+
+// admin
+관리자 메인 : chhak.kr/kmarket/admin/index.html
+상품관리/목록 : chhak.kr/kmarket/admin/product/list.html
+상품관리/등록 : chhak.kr/kmarket/admin/product/register.html
+
+- 궁금한 내용 질문하기
+- 수업시간, 쉬는시간 잘 지켜주세요.
