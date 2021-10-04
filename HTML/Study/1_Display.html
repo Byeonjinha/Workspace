@@ -15,9 +15,88 @@
     */
     .box1 > span:nth-child(1) {visibility: hidden;}
     .box1 > span:nth-child(2) {display: none;}
-    .box1 > span:nth-child(3) {opacity : 0 ;}
+    .box1 > span:nth-child(3) {opacity : 0 ;}                
 </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
 
+        body > div{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .box1 > div{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .box2 > div{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 200px;
+            height: 200px;
+            background: green
+        }
+        .box3 > div{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .box3 > div > div{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        .box4 > div{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .box4 > div > div{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        .box5 > div{
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+        .box5 > div > div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            right: 50px;
+            background: blue;
+        }
+    </style>
+
+</head>
 </head>
 
 <body>
@@ -50,3 +129,4 @@
         <span>TEXT3</span>
     </div>
 </body>
+

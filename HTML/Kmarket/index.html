@@ -15,7 +15,8 @@
         $(document).ready(function(){     // 문서가 준비되면 매개변수로 넣은 콜백 함수를 실행
           $('.slider > ul').bxSlider({   // 이미지 슬라이더 사용 
               pager: false,               //페이지 바로가기 버튼 보여지게 유무(true, false) 
-              easing: 'linear'            // CSS 전환 및 애니메이션을 통해 애니메이션에 사용할 easing (타이머라고 볼 수 있음) 종류를 선택
+              easing: 'linear',            // CSS 전환 및 애니메이션을 통해 애니메이션에 사용할 easing (타이머라고 볼 수 있음) 종류를 선택
+    
           });
         });
       
@@ -70,25 +71,25 @@
                         <li><a href="#">인기상품</a></li> <!-- list item  (ul 의 항목을 나열 )-->
                         <li><a href="#">할인상품</a></li> <!-- list item  (ul 의 항목을 나열 )-->
                     </ul>
-                    <ul>
-                        <li><a href="#">쿠폰존</a></li>
-                        <li><a href="#">사용후기</a></li>
-                        <li><a href="#">개인결제</a></li>
-                        <li><a href="#">고객센터</a></li>
-                        <li><a href="#">FAQ</a></li>
+                    <ul> <!-- unorder list 순서가 필요없는 목록 생성 -->
+                        <li><a href="#">쿠폰존</a></li> <!-- list item  (ul 의 항목을 나열 )-->
+                        <li><a href="#">사용후기</a></li> <!-- list item  (ul 의 항목을 나열 )-->
+                        <li><a href="#">개인결제</a></li> <!-- list item  (ul 의 항목을 나열 )-->
+                        <li><a href="#">고객센터</a></li> <!-- list item  (ul 의 항목을 나열 )-->
+                        <li><a href="#">FAQ</a></li> <!-- list item  (ul 의 항목을 나열 )-->
                     </ul>
                 </div>
             </div>
         </header>
-        <main>
+        <main>       <!-- <main> 태그는 해당 문서의 <body> 요소의 주 콘텐츠(main content)를 정의할 때 사용 -->
             <!-- 카테고리/베스트 상품 영역 -->
-            <aside>
+            <aside>   <!-- <aside> 태그는 페이지의 다른 콘텐츠들과 약간의 연관성을 가지고 있지만, 해당 콘텐츠들로부터 분리시킬 수 있는 콘텐츠로 구성된 페이지 영역을 정의할 때 사용-->
                 <!-- 카테고리 -->
-                <ul class="category">     
+                <ul class="category">   <!-- unorder list 속성의 catogory 생성-->   
                     <li><i class="fa fa-bars" aria-hidden="true"></i>카테고리</li>
                     <li>
                         <a href="#"><i class="fas fa-tshirt"></i>패션·의류·뷰티</a>
-                        <ol>
+                        <ol>        
                             <li><a href="#">남성의류</a></li>
                             <li><a href="#">여성의류</a></li>
                             <li><a href="#">잡화</a></li>
@@ -125,7 +126,7 @@
                 </ul>
 
                 <!-- 베스트상품 배너 -->
-                <article class="best">
+                <article class="best">   <!-- <article> 태그는 해당 문서나 페이지 또는 사이트와는 완전히 독립적으로 구성할 수 있는 요소를 정의할 때 사용합니다. -->
                   <h1><i class="fas fa-crown"></i>베스트상품</h1>
                   <ol>
                     <li>
@@ -134,13 +135,13 @@
                           <i>1</i>
                           <img src="./img/thumb-popular-item1.jpg" alt="item1">
                         </div>
-                        <h2>TH-파스텔드레스셔츠 - 그린</h2>
+                        <h2>TH-파스텔드레스셔츠 후룩후루루룩 - 그린</h2>
                         <div class="org_price">
-                          <del>30,000</del>
-                          <span>10%</span>
+                          <del>30,000</del>   <!-- del은 텍스트를 삭제했음을 나타냅니다. 취소선이 있는 게 기본 모양입니다.  -->
+                          <span>10%</span>  <!--  <span>태그의 요소를 변경할 수 있는 속성입니다. <span>태그의 display속성 defalut값은 inline으로 되어있습니다. -->
                         </div>
-                        <div class="dis_price">
-                          <ins>27,000</ins>
+                        <div class="dis_price"> 
+                          <ins>27,000</ins>    <!-- <ins> 태그는 텍스트 아래쪽에 라인(line)을 추가하여 문서에 추가된 텍스트를 표현할 때 사용합니다. -->
                         </div>
                       </a>
                     </li>
@@ -219,7 +220,7 @@
                   </ol>
                 </article>
             </aside>
-            <section>
+            <section>   <!-- <section>요소 는 HTML 문서의 독립적 인 구획을 나타내며, 더 적합한 의미를 가진 요소가 없을 때 사용 -->
                 <!-- 슬라이더 영역 -->
                 <section class="slider">
                     <ul>
@@ -297,7 +298,7 @@
                               <span>10%</span>
                             </div>
                             <div class="dis_price">
-                              <ins>27,000</ins>
+                              <ins>27,000,000,000,000</ins>
                               <span>무료배송</span>
                             </div>
                         </a>
@@ -794,7 +795,7 @@
                 </section>
             </section>
         </main>
-        <footer>
+        <footer>  <!-- <footer> 태그는 문서나 특정 섹션(section)의 푸터(footer)를 정의할 때 사용  -->
             <ul>
                 <li><a href="#">회사소개</a></li>
                 <li><a href="#">서비스이용약관</a></li>
@@ -802,10 +803,10 @@
                 <li><a href="#">전자금융거래약관</a></li>
             </ul>
             <div>
-                <p><img src="./img/footer_logo.png" alt="로고"></p>
+                <p><img src="./img/footer_logo.png" alt="로고"></p>  <!-- <p> 태그는 문단(paragraph)을 정의할 때 사용합니다.  --> 
                 <p>
-                  <strong>(주)KMARKET</strong><br />
-                  부산시 강남구 테헤란로 152 (역삼동 강남파이낸스센터)<br />
+                  <strong>(주)KMARKET</strong><br />  <!-- <strong> 태그는 해당 콘텐츠의 중요성이나 심각함, 긴급함 등을 강조할 때 사용  -->
+                  부산시 강남구 테헤란로 152 (역삼동 강남파이낸스센터)<br />  <!-- <br> 태그는 텍스트 내의 줄바꿈(line-break)을 정의할 때 사용-->
                   대표이사 : 홍길동<br />
                   사업자등록번호 : 220-81-83676 사업자정보확인<br />
                   통신판매업신고 : 강남 10630호 Fax : 02-589-8842
