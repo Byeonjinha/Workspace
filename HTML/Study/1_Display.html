@@ -1,104 +1,48 @@
-<head>
-    <meta charset = "UTF-8">
-    <title>Display 속성</title>
-<style>
-    /*
-        display : none
-        -태그 요소를 브라우저 화면에서 제거(자리공간 포함)
-        -visibility : hidden 자리공간 남음 (opcity : 0과 같음)
-
-        display : block
-        -inline 태그를 lbock 태그로 변환
-
-        display : inline
-        display : inline-block
-    */
-    .box1 > span:nth-child(1) {visibility: hidden;}
-    .box1 > span:nth-child(2) {display: none;}
-    .box1 > span:nth-child(3) {opacity : 0 ;}                
-</style>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Display 속성</title>
     <style>
+        /* 
+            display:none
+             - 태그요소를 브라우저 화면에서 제거(자리공간 포함)
+             - visibility: hidden은 자리공간 남음(opacity: 0과 같음)
+            display:block
+             - inline 태그를 block 태그로 변환
+             - 태그 출력방향 세로방향, Width/Height 크기 적용 O
+            display:inline
+             - block 태그를 inline 태그로 변환
+             - 태그 출력방향 가로방향, Width/Height 크기 적용 X
+            display:inline-block
+             - inline, block태그 inline-block 태그로 변환
+             - 태그 출력방향 가로방향, Width/Height 크기 적용 O
+        */
+        .box1 > span:nth-child(1) {visibility: hidden;}
+        .box1 > span:nth-child(2) {display: none;}
+        .box1 > span:nth-child(3) {opacity: 0.2;}
 
-        body > div{
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border: 1px solid black;
+        .box2 > span {
+            border: 1px solid yellow
         }
-        .box1 > div{
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 200px;
-            height: 200px;
-            background: green;
+        .box2 > span:nth-child(2) {display: block;}
+
+        .box3 > * {
+            border: 1px solid orange;
         }
-        .box2 > div{
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 200px;
-            height: 200px;
-            background: green
+        .box3 > div {display: inline;}
+
+        .box4 > * {
+            border: 1px solid pink;            
         }
-        .box3 > div{
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 200px;
-            height: 200px;
-            background: green;
-        }
-        .box3 > div > div{
-            position: absolute;
-            right: 0;
-            bottom: 0;
+
+        .box4 > div {
+            display: inline-block;
             width: 100px;
             height: 100px;
-            background: blue;
-        }
-        .box4 > div{
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 200px;
-            height: 200px;
-            background: green;
-        }
-        .box4 > div > div{
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100px;
-            height: 100px;
-            background: blue;
-        }
-        .box5 > div{
-            position: absolute;
-            left: 50px;
-            top: 0;
-            width: 200px;
-            height: 200px;
-            background: green;
-        }
-        .box5 > div > div{
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            left: 50px;
-            right: 50px;
-            background: blue;
         }
     </style>
-
 </head>
-</head>
-
 <body>
     <h3>display 속성</h3>
 
@@ -115,18 +59,20 @@
         <span>TEXT2</span>
         <span>TEXT3</span>
     </div>
+
     <h4>display:inline</h4>
     <div class="box3">
         <span>TEXT1</span>
-        <span>TEXT2</span>
+        <div>TEXT2</div>
         <span>TEXT3</span>
     </div>
 
     <h4>display:inline-block</h4>
     <div class="box4">
         <span>TEXT1</span>
-        <span>TEXT2</span>
+        <div>TEXT2</div>
         <span>TEXT3</span>
     </div>
+    
 </body>
-
+</html>
