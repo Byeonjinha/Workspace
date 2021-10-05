@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\..\\Desktop\\workspace"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\Desktop\\workspace\\html,jquery"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "workspace"
+	}
+}

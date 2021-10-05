@@ -180,29 +180,29 @@ main > aside > .category > li > a {
     font-size: 13px;
     font-weight: bold;
 }
-main > aside > .category > li > a:hover {
+main > aside > .category > li > a:hover {   /* a:hover : 링크에 마우스 포인터를 올려 놓았을 때*/
     background: #2b313f;
     color: #fff;
 }
 
-/* 留덉슦�ㅻ� �щ━�� 移댄뀒怨좊━ 硫붾돱�� �쒕툕硫붾돱 異쒗쁽 */
+
 main > aside > .category > li > a:hover + ol { display: block; }
-/* �쒕툕硫붾돱�� 留덉슦�ㅺ� �щ씪媛�硫� 怨꾩냽 �몄텧 */
+
 main > aside > .category ol:hover { display: block; }
 
-main > aside > .category > li i {
+main > aside > .category > li i {  /* 카테고리 하위 아이콘 속성*/
     font-size: 16px;
-    margin-right: 12px;
+    margin-right: 12px; /*아이콘 우측여백*/
 }
 
-main > aside > .category ol {
+main > aside > .category ol {   /*패션, 가전, 식품, 홈 등등 상위 카테고리 밑의 하위카테고리*/
     position: absolute;
     left: 215px;
     top: 0;
-    display: none;
+    display: none;  /* 마우스 올리기전엔 보여지지 않음*/
     width: 215px;
     height: 100%;
-    border: 1px solid #787f89;
+    border: 1px solid #787f89;   /* 태그의 테두리를 설정하는 속성 */
     background: #fff;
     box-sizing: border-box;
     z-index: 10000;
@@ -214,18 +214,18 @@ main > aside > .category ol > li {
     padding: 10px;
     box-sizing: border-box;
 }
-main > aside > .category ol > li > a:hover {
+main > aside > .category ol > li > a:hover {  /* a:hover : 링크에 마우스 포인터를 올려 놓았을 때*/
     color: #41ab47;
-    text-decoration: underline;
+    text-decoration: underline;  /* 밑줄 */ 
 }
 
-/* 踰좎뒪�� 諛곕꼫 */
+/* 베스트상품 */
 main > aside > .best {
     width: 215px;
     height: auto;
     border: 1px solid #dbdbdb;
     box-sizing: border-box;
-    box-shadow: 0 0 5px rgba(55, 55, 5, 0.2);
+    box-shadow: 0 0 5px rgba(55, 55, 5, 0.2);    /* 베스트 상품 전체 테두리 음영 */
 }
 
 main > aside > .best > h1 {
@@ -234,7 +234,7 @@ main > aside > .best > h1 {
     color: #111;
     margin: 6px;
 }
-main > aside > .best > h1 > i {
+main > aside > .best > h1 > i {   /*아이콘속성*/
     margin-right: 6px;
     font-size: 18px;
 }
@@ -258,11 +258,11 @@ main > aside > .best > ol > li > a {
     overflow: hidden;
 }
 
-main > aside > .best > ol > li > a:hover h2 {
+main > aside > .best > ol > li > a:hover h2 {   /* 리스트 아이템에 마우스 갖다댈 때 */
     text-decoration: underline;
 }
-main > aside > .best > ol > li > a > .thumb {
-    float: left;
+main > aside > .best > ol > li > a > .thumb {   /* 베스트상품 하위 리스트 아이템 순위 썸네일*/
+    float: left ;
     position: relative;
     width: 50px;
     height: 50px;
@@ -271,15 +271,15 @@ main > aside > .best > ol > li > a > .thumb {
     box-sizing: border-box;
 }
 
-main > aside > .best > ol > li:first-child > a > .thumb {
+main > aside > .best > ol > li:first-child > a > .thumb {  /* 베스트상품 하위 리스트 아이템 첫번째 썸네일*/
     position: relative;
-    float: none;
+    float: none;   /* none (기본값) : 정렬하지 않는다. */
     width: 100%;
     height: 100%;
     overflow: hidden;
     margin: 0 auto;
 }
-main > aside > .best > ol > li > a > .thumb > i {
+main > aside > .best > ol > li > a > .thumb > i { /* 베스트상품 하위 리스트 아이템  썸네일 등수 아이콘*/
     position: absolute;
     left: 0;
     top: 0;
@@ -291,8 +291,8 @@ main > aside > .best > ol > li > a > .thumb > i {
     color: #ef3e42;
     border-bottom: 1px solid #ef3e42;
     font-weight: 500;
-    font-style: italic;
-    text-align: center;
+    font-style: italic;  /*이텔릭체 사용 기울임 노말 등등 사용가능*/
+    text-align: center;  /* 속성은 텍스트의 정렬 방향을 의미 */
     line-height: 18px;
 }
 main > aside > .best > ol > li:first-child > a > .thumb > i {
@@ -313,13 +313,13 @@ main > aside > .best > ol > li > a > article {
 
 main > aside > .best > ol > li > a h2 {
     margin-top: 4px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: ellipsis; /* 글자가 넘을 경우 생략부호를 표시함  ex)...*/
+    white-space: nowrap;  /* white-space는 스페이스와 탭, 줄바꿈, 자동줄바꿈을 어떻게 처리할지 정하는 속성 */
     overflow: hidden;
 }
-main > aside > .best > ol > li > a .org_price {}
-main > aside > .best > ol > li > a .org_price > del::after {content: "��";}
-main > aside > .best > ol > li > a .org_price > ins::after {content: "��";}
+main > aside > .best > ol > li > a .org_price {}   /* 원가 */
+main > aside > .best > ol > li > a .org_price > del::after {content: "원";}
+main > aside > .best > ol > li > a .org_price > ins::after {content: "원";}
 main > aside > .best > ol > li > a .org_price > del {
     font-size: 10px;
     color: #aaa;
@@ -328,13 +328,13 @@ main > aside > .best > ol > li > a .org_price > span {
     color: #eb000a;
     font-size: 10px;
 }
-main > aside > .best > ol > li > a .org_price > span::after { content: "��"; }
+main > aside > .best > ol > li > a .org_price > span::after { content: "↓"; }
 main > aside > .best > ol > li > a .dis_price {}
 main > aside > .best > ol > li > a .dis_price > ins {
     font-size: 14px;
     text-decoration: none;
 }
-main > aside > .best > ol > li > a .dis_price > ins::after { content: "��"; }
+main > aside > .best > ol > li > a .dis_price > ins::after { content: "원"; }
 main > aside > .best > ol > li > a .dis_price > span {
     display: inline-block;
     font-size: 0;
@@ -344,7 +344,7 @@ main > aside > .best > ol > li > a .dis_price > span {
     background: url('../img/ico_freeshipping.gif') no-repeat;
 }
 
-/* 硫붿씤 泥ル쾲吏� �뱀뀡 */
+/* main > section 속성 */
 main > section {
     float: right;
     width: 985px;
@@ -391,7 +391,7 @@ main > section > section > article h2 {
     margin-top: 4px;
     text-align: center;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: nowrap; /* white-space는 스페이스와 탭, 줄바꿈, 자동줄바꿈을 어떻게 처리할지 정하는 속성 */
     overflow: hidden;
 }
 
@@ -406,15 +406,15 @@ main > section > section > article p {
 }
 main > section > section > article > a:hover > p {text-decoration: underline;}
 
-main > section > section > article del::after {content: "��";}
-main > section > section > article ins::after {content: "��";}        
+main > section > section > article del::after {content: "원";}
+main > section > section > article ins::after {content: "원";}        
 main > section > section > article .org_price > del {
     color: #aaa;
 }
 main > section > section > article .org_price > span {
     color: #eb000a;
 }
-main > section > section > article .org_price > span::after { content: "��"; }
+main > section > section > article .org_price > span::after { content: "↓"; }
 main > section > section > article .dis_price { margin-top: 4px; }
 main > section > section > article .dis_price > ins {            
     font-size: 14px;
@@ -429,7 +429,7 @@ main > section > section > article .dis_price > span {
     background: url('../img/ico_freeshipping.gif') no-repeat;
 }
 
-/* �щ씪�대뜑 �곸뿭 */
+/* slider 속성 */
 main > section > .slider {
     width: 100%;
     height: 425px;
@@ -654,8 +654,8 @@ h5.rating.star5 {background-position: 0 -200px;}
 }
 
 #list > section > article .org_price {}
-#list > section > article .org_price > del::after {content: "��";}
-#list > section > article .org_price > ins::after {content: "��";}
+#list > section > article .org_price > del::after {content: "원";}
+#list > section > article .org_price > ins::after {content: "원";}
 #list > section > article .org_price > del {
     font-size: 12px;
     color: #aaa;
@@ -664,13 +664,13 @@ h5.rating.star5 {background-position: 0 -200px;}
     color: #eb000a;
     font-size: 10px;
 }
-#list > section > article .org_price > span::after { content: "��"; }
+#list > section > article .org_price > span::after { content: "↓"; }
 #list > section > article .dis_price {}
 #list > section > article .dis_price > ins {
     font-size: 16px;
     text-decoration: none;
 }
-#list > section > article .dis_price > ins::after { content: "��"; }
+#list > section > article .dis_price > ins::after { content: "원"; }
 #list > section > article span.freeshipping {
     display: inline-block;
     font-size: 0;
@@ -795,8 +795,8 @@ h5.rating.star5 {background-position: 0 -200px;}
 }
 
 #view .info > .summary .org_price {}
-#view .info > .summary .org_price > del::after {content: "��";}
-#view .info > .summary .org_price > ins::after {content: "��";}
+#view .info > .summary .org_price > del::after {content: "원";}
+#view .info > .summary .org_price > ins::after {content: "원";}
 #view .info > .summary .org_price > del {
     font-size: 18px;
     color: #aaa;
@@ -806,14 +806,14 @@ h5.rating.star5 {background-position: 0 -200px;}
     font-size: 16px;
     margin-left: 6px;
 }
-#view .info > .summary .org_price > span::after { content: "��"; }
+#view .info > .summary .org_price > span::after { content: "↓"; }
 #view .info > .summary .dis_price {}
 #view .info > .summary .dis_price > ins {
     font-size: 26px;
     font-weight: bold;
     text-decoration: none;
 }
-#view .info > .summary .dis_price > ins::after { content: "��"; }
+#view .info > .summary .dis_price > ins::after { content: "↓"; }
 
 #view .info > .summary .delivery {
     font-size: 16px;
@@ -1013,7 +1013,7 @@ h5.rating.star5 {background-position: 0 -200px;}
     text-decoration: none;
 }
 #view .info > .summary .items .price > ins::after {
-    content: "��";
+    content: "원";
 }
 
 #view .info > .summary .total {
@@ -1043,7 +1043,7 @@ h5.rating.star5 {background-position: 0 -200px;}
 }
 
 #view .info > .summary .total > span::after {
-    content: "��";
+    content: "원";
 }
 
 #view .info > .summary > .button {
@@ -1760,13 +1760,13 @@ h5.rating.star5 {background-position: 0 -200px;}
   left: -6px;
 }
 
-/* �곹뭹寃��� �섏씠吏� */
+/* 검색 속성 */
 #search {
   padding: 16px;
   box-sizing: border-box;
 }
 
-#search > .detail_search {
+#search > .detail_search {  /* 세부 검색 결과 */
   width: 100%;
   margin: 16px 0 0;
   border: 1px solid #d7d7d7;
@@ -1898,8 +1898,8 @@ h5.rating.star5 {background-position: 0 -200px;}
 }
 
 #search > section > article .org_price {}
-#search > section > article .org_price > del::after {content: "��";}
-#search > section > article .org_price > ins::after {content: "��";}
+#search > section > article .org_price > del::after {content: "원";}
+#search > section > article .org_price > ins::after {content: "원";}
 #search > section > article .org_price > del {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 12px;
@@ -1910,14 +1910,14 @@ h5.rating.star5 {background-position: 0 -200px;}
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 10px;
 }
-#search > section > article .org_price > span::after { content: "��"; }
+#search > section > article .org_price > span::after { content: "↓"; }
 #search > section > article .dis_price {}
 #search > section > article .dis_price > ins {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   text-decoration: none;
 }
-#search > section > article .dis_price > ins::after { content: "��"; }
+#search > section > article .dis_price > ins::after { content: "원"; }
 #search > section > article span.freeshipping {
   display: inline-block;
   font-size: 0;
