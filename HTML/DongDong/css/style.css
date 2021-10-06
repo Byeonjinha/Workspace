@@ -166,6 +166,8 @@ main {
 
 /* main - aside 속성정의 */
 main > aside {    /* main > aside 선택  (카테고리 메뉴 + 베스트메뉴) */
+    position: static;
+    left : 0px ;
     float: left ; /* 왼쪽에 띄움*/
     width: 0px; 
     height: 100%;
@@ -198,9 +200,9 @@ main > aside > .category ol > li > a:hover {  /* a:hover : 링크에 마우스 �
 
 /* 베스트상품 */
 main > aside > .best {
-    width: 215px;
+    width: 50px;
     height: auto;
-    border: 1px solid #dbdbdb;
+    border: 2px solid #dbdbdb;
     box-sizing: border-box;
     box-shadow: 0 0 5px rgba(55, 55, 5, 0.2);    /* 베스트 상품 전체 테두리 음영 */
 }
