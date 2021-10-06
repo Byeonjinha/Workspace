@@ -39,6 +39,17 @@
           }
         });
       });
+
+      $(function(){
+        $('header > .top > div > a:last-child').click(function(){
+          $('body,html').animate({scrollTop:1000},1000);
+          return false;
+        });
+  
+        });
+
+
+
     </script>          <!-- 스크립트 종료 선언-->                  
 </head>                 <!-- 헤드 종료 선언-->                  
 <body>                  <!-- 바디 시작 선언-->      
