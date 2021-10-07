@@ -221,7 +221,7 @@ a {text-decoration: none; color: rgb(255, 255, 255);}  /* text-decoration CSS �
 #wrapper {        /* #( id선택자   , .은 클래스선택자임 )  wrapper  */   
     position: relative;
     width: 100%;  /*  넓이 100% */
-    background-image: url(../img/1.jpg);
+    background-image: url(../img/2.jpg); 
     background-attachment: fixed;
     height: 100%;
     background-size: cover;
@@ -577,7 +577,12 @@ main > section > .slider > .bx-wrapper {
 }
 
 
-main > section > .hit {}
+main > #admin-index > article > table>tbody > tr > td > img {
+
+  background-color: #41ab47;
+height: 100%;
+width: 100%;
+}
 main > section > .recommend {}
 main > section > .new {}
 main > section > .discount {}
