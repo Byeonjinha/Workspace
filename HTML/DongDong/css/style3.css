@@ -429,7 +429,7 @@ main > aside > .category ol > li > a:hover {  /* a:hover : 링크에 마우스 �
 }
 
 /* 베스트상품 */
-main > aside > .best {
+main > aside > .catelist {
     position: fixed;
     margin-left : -240px;
     padding-top: 40px;
@@ -444,21 +444,21 @@ main > aside > .best {
     border-radius: 10px 10px 10px 10px ;
 }
 
-main > aside > .best > h1 {
+main > aside > .catelist > h1 {
     font-size: 14px;
     font-weight: bold;
     color: #111;
     margin: 6px;
 }
-main > aside > .best > h1 > i {   /*아이콘속성*/
+main > aside > .catelist > h1 > i {   /*아이콘속성*/
     margin-right: 6px;
     font-size: 18px;
 }
 
-main > aside > .best > ol {
+main > aside > .catelist > ol {
     width: 100%;
 }
-main > aside > .best > ol > li {
+main > aside > .catelist > ol > li {
     width: 100%;
     height: 100%;
     padding: 0 6px;
@@ -467,15 +467,15 @@ main > aside > .best > ol > li {
 }
 
 
-main > aside > .best >a {
+main > aside > .catelist >a {
     font-size: 20px;
     margin-left: 5px;
 }
-main > aside > .best >a:nth-child(1) {
+main > aside > .catelist >a:nth-child(1) {
   font-size: 20px;
   margin-left: 20px;
 }
-main > aside > .best >a:hover {
+main > aside > .catelist >a:hover {
   color: rgb(145, 144, 144); 
   border-bottom: 1px solid #444;
 }

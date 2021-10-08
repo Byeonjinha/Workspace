@@ -221,7 +221,7 @@ a {text-decoration: none; color: rgb(255, 255, 255);}  /* text-decoration CSS �
 #wrapper {        /* #( id선택자   , .은 클래스선택자임 )  wrapper  */   
     position: relative;
     width: 100%;  /*  넓이 100% */
-    background-image: url(../img/2.jpg); 
+    background-image: url(../img/bonobo-g394829654_1920.jpg); 
     background-attachment: fixed;
     height: 100%;
     background-size: cover;
@@ -290,7 +290,6 @@ header > .top > div > a:nth-child(1).button {
 }
 header > .top > div > a:last-child {  /* <a> 태그는 하이퍼링크를 걸어주는 태그 */
     border-right: 1px solid #e9e9e9;  /* border-right 는 요소의 오른쪽 테두리를 설정 */
-
 }
 
 header > .top > div > a:hover { /* a:link 방문하기전의 링크 / a:visited  방문한 링크 / a:hover : 링크에 마우스 포인터를 올려 놓았을 때 / a:active : 링크를 마우스로 클릭한 순간 */
@@ -358,23 +357,7 @@ header > .menu > div {
     margin: 0 auto;
 }
 header > #background_IMG {position: relative;    background-size: cover; z-index: 0;}
-header > .menu > div > ul {
-    display: inline-block;
-    margin-top: 16px;
-}        
 
-
-
-header > .menu > div > ul:nth-child(1) {float: left;}    /* 히트상품 , 추천상품, 최신상품, 인기상품 , 할인상품*/
-header > .menu > div > ul:nth-child(2) {float: right;}   /*쿠폰존 , 사용후기, 개인결제, 고객센터, FAQ */
-header > .menu > div > ul > li {float: left;}      /* 목록 왼쪽에 띄움 */
-header > .menu > div > ul > li > a {
-    border-left: 1px solid #e9e9e9;
-    padding: 0 10px;
-}
-header > .menu > div > ul > li:last-child > a {
-    border-right: 1px solid #e9e9e9;
-}
 
 /* main 속성 정의 */
 main {           
@@ -399,10 +382,7 @@ main > aside {    /* main > aside 선택  (카테고리 메뉴 + 베스트메뉴
     float: left ; /* 왼쪽에 띄움*/
     width: 0px; 
     height: 100%;
-   
-    
 }
-
 
 main > aside > .category ol {   /*패션, 가전, 식품, 홈 등등 상위 카테고리 밑의 하위카테고리*/
     position: absolute;
@@ -428,8 +408,7 @@ main > aside > .category ol > li > a:hover {  /* a:hover : 링크에 마우스 �
     text-decoration: underline;  /* 밑줄 */ 
 }
 
-/* 베스트상품 */
-main > aside > .best {
+main > aside > .catelist {
     position: fixed;
     margin-left : -240px;
     padding-top: 40px;
@@ -444,21 +423,21 @@ main > aside > .best {
     border-radius: 10px 10px 10px 10px ;
 }
 
-main > aside > .best > h1 {
+main > aside > .catelist > h1 {
     font-size: 14px;
     font-weight: bold;
     color: #111;
     margin: 6px;
 }
-main > aside > .best > h1 > i {   /*아이콘속성*/
+main > aside > .catelist > h1 > i {   /*아이콘속성*/
     margin-right: 6px;
     font-size: 18px;
 }
 
-main > aside > .best > ol {
+main > aside > .catelist > ol {
     width: 100%;
 }
-main > aside > .best > ol > li {
+main > aside > .catelist > ol > li {
     width: 100%;
     height: 100%;
     padding: 0 6px;
@@ -467,15 +446,15 @@ main > aside > .best > ol > li {
 }
 
 
-main > aside > .best >a {
+main > aside > .catelist >a {
     font-size: 20px;
     margin-left: 5px;
 }
-main > aside > .best >a:nth-child(1) {
+main > aside > .catelist >a:nth-child(1) {
   font-size: 20px;
   margin-left: 20px;
 }
-main > aside > .best >a:hover {
+main > aside > .catelist >a:hover {
   color: rgb(145, 144, 144); 
   border-bottom: 1px solid #444;
 }
