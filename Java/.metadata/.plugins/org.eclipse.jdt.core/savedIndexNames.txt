@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\bigdata.DESKTOP-61ML0B4\Desktop\Workspace\Java\.metadata\.plugins\org.eclipse.jdt.core
+3495751047.index
+2050788949.index

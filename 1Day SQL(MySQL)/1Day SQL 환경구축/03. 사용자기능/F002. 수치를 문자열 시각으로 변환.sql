@@ -1,0 +1,15 @@
+DELIMITER $$
+CREATE FUNCTION FN_DT_SecToTm(p_sec INT)
+RETURNS CHAR(6)
+
+BEGIN
+	DECLARE ret_tm CHAR(6);
+  
+    SELECT CONCAT(LPAD(FLOOR(MOD(p_sec,86400)/3600),2,'0'),
+             LPAD(FLOOR(MOD(MOD(p_sec,86400),3600)/60),2,'0'),
+             LPAD(FLOOR(MOD(MOD(MOD(p_sec,86400),3600),60)),2,'0')) INTO ret_tm FROM DUAL;
+
+    RETURN ret_tm;
+
+END $$
+DELIMITER ;

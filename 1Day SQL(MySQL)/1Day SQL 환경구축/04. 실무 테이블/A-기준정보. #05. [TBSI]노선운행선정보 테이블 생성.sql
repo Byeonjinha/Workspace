@@ -1,0 +1,17 @@
+
+CREATE TABLE TBSI_RT_LN
+(
+  ROUT_CD            CHAR(5)               NOT NULL,
+  APL_ST_DT          CHAR(8)               NOT NULL,
+  LN_ORDR            INT(2)                NOT NULL,
+  LN_CD              CHAR(3)               NOT NULL,
+  LN_ST_STN_CD       CHAR(8)               NOT NULL,
+  LN_CLS_STN_CD      CHAR(8)               NOT NULL
+);
+
+CREATE UNIQUE INDEX PK_TBSI_RT_LN ON TBSI_RT_LN (ROUT_CD, APL_ST_DT, LN_ORDR);
+
+ALTER TABLE TBSI_RT_LN ADD (CONSTRAINT PK_TBSI_RT_LN PRIMARY KEY (ROUT_CD, APL_ST_DT, LN_ORDR));
+
+ALTER TABLE TBSI_RT_LN ADD (CONSTRAINT FK_TBSI_RT_LN FOREIGN KEY (ROUT_CD, APL_ST_DT)
+                               REFERENCES TBSI_RT (ROUT_CD, APL_ST_DT));
