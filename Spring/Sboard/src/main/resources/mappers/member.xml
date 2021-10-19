@@ -20,8 +20,12 @@
 	<select id="selectTerms" resultType="kr.co.sboard.vo.TermsVo">
 		SELECT * FROM `Jboard_terms`;
 	</select>
-	<select id="selectMember"></select>
+	
+	<select id="selectMember" resultType="kr.co.sboard.vo.MemberVo">
+		SELECT * FROM `Jboard_member` WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});	
+	</select>
 	<select id="selectMembers"></select>
+	
 	<select id="selectCountUid" resultType="int">
 		SELECT COUNT(`uid`) FROM `Jboard_member` WHERE `uid`=#{uid};
 	</select>
@@ -31,7 +35,9 @@
 	<select id="selectCountEmail" resultType="int">
 		SELECT COUNT(`email`) FROM `Jboard_member` WHERE `email`=#{email};
 	</select>
-	
+	<select id="selectCountHp" resultType="int">
+		SELECT COUNT(`hp`) FROM `Jboard_member` WHERE `hp`=#{hp};
+	</select>
 	
 	<update id="updateMember"></update>
 	<delete id="deleteMember"></delete>

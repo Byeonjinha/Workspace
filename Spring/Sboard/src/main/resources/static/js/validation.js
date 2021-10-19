@@ -25,6 +25,10 @@ $(document).ready(function(){
 			alert('닉네임이 유효하지 않습니다. 다시 입력하세요.');
 			return false; // 전송취소	
 		}
+		if(!isEmailOk){
+			alert('이메일이 유효하지 않습니다. 다시 입력하세요.');
+			return false; // 전송취소	
+		}
 		
 		return true; // 전송시작		
 	});

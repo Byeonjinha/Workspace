@@ -13,7 +13,7 @@ var isUidOk  = false;
 var isPassOk = false;
 var isNameOk = false;
 var isNickOk = false;
-
+var isEmailOk = false;
 $(document).ready(function(){
 	// 아이디 중복 체크 
 	$('input[name=uid]').focusout(function(){
@@ -70,28 +70,22 @@ $(document).ready(function(){
 	});
 	
 	// 이름 유효성 검사
-	$('input[name=name1]').focusout(function(){
+	$('input[name=name]').focusout(function(){
 		
-		var name1 = $(this).val();
-		
-			$.ajax({
-			url: '/member/checkUid?name1='+name1,
-			type: 'get',
-			dataType: 'json',
-			success: function(data){
+		var name = $(this).val();
 				
-		if(reName.test(name1)==1){
-			isNameOk = true;
+		if(reName.test(name)==1){
 			$('.resultName').css('color', 'green').text('올바른 이름입니다.');
-		}else if(name1 == ''){	
+			isNameOk = true;
+		}else if(name == ''){	
 			$('.resultName').css('color', 'red').text('이름을 입력하세요');
 			isNameOk = false;
-		}else if(reName.test(name1)==0) {
+		}else if(reName.test(name)==0) {
 			$('.resultName').css('color', 'red').text('이름이 올바르지 않습니다.');
 			isNameOk = false;
 		}	
-		}
-		});
+		
+	
 	});
 	
 	
@@ -104,9 +98,9 @@ $(document).ready(function(){
 		var jsonData = {'nick':nick};
 			$.ajax({
 			url: '/member/checkNick',
-					type: 'GET',
-					data: jsonData,
-					dataType: 'json',
+			type: 'GET',
+			data: jsonData,
+			dataType: 'json',
 			success: function(data){
 
 				if(data.result == 1){					    						
@@ -132,19 +126,28 @@ $(document).ready(function(){
 	$('input[name=email]').focusout(function(){
 		
 		var email = $(this).val();
-		
+		var jsonData = {'email':email};
 		$.ajax({
-			url: '/member/checkEmail?email='+email,
-			type: 'get',
+			url: '/member/checkEmail',
+			type: 'GET',
+			data: jsonData,
 			dataType: 'json',
 			success: function(data){
 					
 				if(data.result == 1){    						
 					$('.resultEmail').css('color', 'red').text('이미 사용중인 이메일 입니다.');
+					isEmailOk = false;
 				}else if( email==''){
 					$('.resultEmail').css('color', 'red').text('이메일을 입력하세요.');
+					isEmailOk = false;
 				}else if(data.result==0){
-					$('.resultEmail').css('color', 'green').text('사용 가능한 이메일 입니다.');
+					 if(reEmail.test(email)){
+						$('.resultEmail').css('color','green').text('사용 가능한 이메일 입니다.');
+						isEmailOk = true;
+					}else{//유효성검사하기
+					$('.resultEmail').css('color', 'red').text('이메일 양식에 맞지 않습니다.');
+					isEmailOk = false;
+					}
 				}
 			}    				
 		});
@@ -154,16 +157,19 @@ $(document).ready(function(){
 	$('input[name=hp]').focusout(function(){
 		
 		var hp = $(this).val();
-		
+		var jsonData = {'hp':hp};
 		$.ajax({
-			url: '/member/checkUid?hp='+hp,
-			type: 'get',
+			url: '/member/checkHp',
+			type: 'GET',
+			data: jsonData,
 			dataType: 'json',
 			success: function(data){
 				
 				if(data.result == 1){    						
 					$('.resultHp').css('color', 'red').text('이미 사용중인 휴대폰번호 입니다.');
-				}else{
+				}else if(hp==''){
+					$('.resultHp').css('color', 'red').text('휴대폰 번호를 입력하세요.');
+				}else if(data.result==0){
 					$('.resultHp').css('color', 'green').text('사용 가능한 휴대폰번호 입니다.');
 				}
 			}    				
