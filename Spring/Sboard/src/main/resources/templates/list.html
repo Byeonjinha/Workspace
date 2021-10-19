@@ -22,15 +22,19 @@
                         <th>날짜</th>
                         <th>조회</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><a th:href="@{/view}">테스트 제목입니다.</a>&nbsp;[3]</td>
-                        <td>길동이</td>
-                        <td>20-05-12</td>
-                        <td>12</td>
-                    </tr>
+                  
+	                 <tr th:each="article:${articles}">
+	                        <td>[[${pageStartNum = pageStartNum - 1}]]</td>
+	                        <td><a th:href="@{/view}">[[${vo.title}]]</a>&nbsp;[${articles.comment}]</td>
+	                        <td>[[${articles.nick}]]</td>
+	                        <td>[[${articles.rdate}]]</td>
+	                        <td>[[${articles.hit}]]</td>
+	                    </tr>
+                   
                 </table>
             </article>
+
+
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
