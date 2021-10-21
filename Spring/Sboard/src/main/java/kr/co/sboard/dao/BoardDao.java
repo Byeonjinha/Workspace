@@ -16,8 +16,11 @@ public interface BoardDao {
 	public ArticleVo selectArticle(int seq);
 	public List<ArticleVo> selectArticles(int start);
 	public int selectCountTotal();
+	public FileVo selectFile(int fseq);
 	
 	
 	public void updateArticle(int seq);
+	public void updateFileDownload(int fseq);
+	
 	public void deleteArticle(int seq);
 }

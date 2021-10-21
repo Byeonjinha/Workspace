@@ -1,9 +1,14 @@
 package kr.co.sboard.service;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,9 +43,19 @@ public class BoardService {
 		return dao.selectCountTotal();
 	}
 	
+	public FileVo selectFile(int fseq) {
+		return dao.selectFile(fseq);
+	}
+	
+	
 	public void updateArticle(int seq) {
 		dao.updateArticle(seq);
 	}
+	public void updateFileDownload(int fseq) {
+		dao.updateFileDownload(fseq);
+	}
+	
+	
 	public void deleteArticle(int seq) {
 		dao.deleteArticle(seq);
 	}
@@ -74,6 +89,28 @@ public class BoardService {
 		
 		return fvo;
 	}
+	
+	public void fileDownload(HttpServletResponse resp, FileVo fileVo) {
+	File file = new File("src/main/resources/static/file/");
+	String path = file.getAbsolutePath()+"/"+fileVo.getNewName();
+	try {
+		byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
+		// 파일 다운로드 response 헤더수정
+		resp.setContentType("application/octet-stream");
+		resp.setHeader("Content-Disposition", "attachment; filename="+URLEncoder.encode(fileVo.getOriName(), "utf-8"));
+		resp.setHeader("Content-Transfer-Encoding", "binary");
+		resp.setHeader("Pragma", "no-cache");
+		resp.setHeader("Cache-Control", "private");
+		
+		resp.getOutputStream().write(fileByte);
+		resp.getOutputStream().flush();
+		resp.getOutputStream().close();
+
+	}catch (IOException e) {
+		e.printStackTrace();
+	}
+	}
+	
 	
 	// 페이지 리스트 시작번호
 	public int getPageStartNum(int total, int start) {

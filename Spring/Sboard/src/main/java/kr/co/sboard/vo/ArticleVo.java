@@ -19,8 +19,10 @@ public class ArticleVo {
 	private String uid;
 	private String regip;
 	private String rdate;
-	
+
 	// 추가필드
 	private MultipartFile fname;
 	private String nick;
+	private FileVo fileVo;
+	
 }

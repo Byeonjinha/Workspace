@@ -1,6 +1,8 @@
 package kr.co.sboard.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,8 +10,10 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,12 +63,19 @@ public class BoardController {
 		model.addAttribute("lastPageNum", lastPageNum);
 		model.addAttribute("groups", groups);
 		
-		
 		return "/list";
 	}
 	
 	@GetMapping("/view")
-	public String view() {
+	public String view(int seq, Model model) {
+		
+		
+		
+		
+		
+		
+		ArticleVo vo = service.selectArticle(seq);
+		model.addAttribute(vo);		
 		return "/view";
 	}
 	
@@ -97,9 +108,59 @@ public class BoardController {
 		return "redirect:/list";
 	}
 	
+	@GetMapping("/fileDownload")
+	public void fileDownload(int fseq, HttpServletResponse resp) {
+		service.updateFileDownload(fseq);
+		FileVo fileVo =service.selectFile(fseq);
+	    service.fileDownload(resp, fileVo);
+	}
+	
+	
+	
 	@GetMapping("/modify")
-	public String modify() {
+	public String modify(int seq, Model model) {
+		ArticleVo vo = service.selectArticle(seq);
+		model.addAttribute(vo);		
 		return "/modify";
 	}
+	
+	@PostMapping("/modify")
+	public String modify(HttpServletRequest req, ArticleVo vo) {
+		
+		String regip = req.getRemoteAddr();
+		vo.setRegip(regip);
+		int seq = 0;
+
+		if(vo.getFname().isEmpty()) {
+			vo.setFile(0);
+			seq = service.insertArticle(vo);
+		}else {
+			vo.setFile(1);
+			seq = service.insertArticle(vo);
+			FileVo fvo = service.fileUpload(vo.getFname(), seq);
+			service.updateArticle(seq);
+		}
+		
+		return "redirect:/view";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(int seq, Model model) {
+		ArticleVo vo = service.selectArticle(seq);
+		model.addAttribute(vo);		
+		return "/delete";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(HttpServletRequest req, ArticleVo vo) {
+		
+		String regip = req.getRemoteAddr();
+		vo.setRegip(regip);
+		int seq = 0;
+
+		return "redirect:/list";
+	}
+	
+	
 	
 }
