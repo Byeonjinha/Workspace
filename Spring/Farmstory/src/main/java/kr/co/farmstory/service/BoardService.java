@@ -43,8 +43,8 @@ public class BoardService {
 	public ArticleVo selectComment(int seq) {
 		return dao.selectComment(seq);
 	}
-	public List<ArticleVo> selectArticles(int start) {
-		return dao.selectArticles(start);	
+	public List<ArticleVo> selectArticles(int start, String cate) {
+		return dao.selectArticles(start, cate);	
 	}
 	
 	public List<ArticleVo> selectComments(int start) {
@@ -52,8 +52,8 @@ public class BoardService {
 	}
 	
 	
-	public int selectCountTotal() {
-		return dao.selectCountTotal();
+	public int selectCountTotal(String cate) {
+		return dao.selectCountTotal(cate);
 	}
 	
 	public FileVo selectFile(int fseq) {
@@ -153,7 +153,7 @@ public class BoardService {
 	}
 
 	// 현재 리스트 페이지 번호
-	public int getCurrentPage(String pg) {
+	public int getCurrentPage(String pg, String cate) {
 		int currentPage = 1;
 		
 		if(pg != null) {

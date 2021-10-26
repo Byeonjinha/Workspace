@@ -7,7 +7,10 @@
         <a th:href="@{/member/terms}">회원가입 |</a>
         </th:block>
           <th:block th:if = "${session.sessMember} != null">
-        <a th:href="@{/member/logout}" class="logout">로그아웃 |</a>
+
+            [[${session.sessMember.nick}]] 님 반갑습니다. |
+            <a th:href="@{/member/logout}" class="logout">로그아웃 |</a>
+ 
         </th:block>
         
         <a th:href="@{/}">고객센터</a>

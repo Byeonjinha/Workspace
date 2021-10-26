@@ -47,7 +47,6 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public String list(String pg, Model model) {
-		
 		int currentPage = service.getCurrentPage(pg);
 		int start = service.getLimitStart(currentPage);
 		int total = service.selectCountTotal();

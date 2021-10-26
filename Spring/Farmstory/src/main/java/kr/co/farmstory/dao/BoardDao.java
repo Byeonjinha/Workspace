@@ -17,10 +17,10 @@ public interface BoardDao {
 	
 	public ArticleVo selectArticle(int seq);
 	public ArticleVo selectComment(int seq);
-	public List<ArticleVo> selectArticles(int start);
+	public List<ArticleVo> selectArticles(int start , String cate);
 	public List<ArticleVo> selectComments(int start);
 	
-	public int selectCountTotal();
+	public int selectCountTotal(String cate);
 	public FileVo selectFile(int fseq);
 	
 	

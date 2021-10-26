@@ -35,17 +35,34 @@ public class BoardController {
 	
 	
 	@GetMapping("/board/list")
-	public String list(String group, String cate, Model model) {
+		public String list(String group, String cate, Model model,String pg) {
+		int currentPage = service.getCurrentPage(pg, cate);
+		int start = service.getLimitStart(currentPage);
+		List<ArticleVo> articles = service.selectArticles(start,cate);
 		
+		int total = service.selectCountTotal(cate);
+		int pageStartNum = service.getPageStartNum(total, start);
+		int lastPageNum = service.getLastPageNum(total);
+		int groups[] = service.getPageGroup(currentPage, lastPageNum);
+		
+		model.addAttribute("articles", articles);
+		model.addAttribute("pageStartNum", pageStartNum);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPageNum", lastPageNum);
+		model.addAttribute("groups", groups);
 		
 		model.addAttribute("group", group);
 		model.addAttribute("cate",cate);
+		
 		return "/board/list";
 	}
 	
 	@GetMapping("/board/view")
-	public String view(int seq, Model model) {
-	
+	public String view(String group, String cate,int seq, Model model) {
+		model.addAttribute("group", group);
+		model.addAttribute("cate",cate);
+		
+		
 		ArticleVo vo = service.selectArticle(seq);
 		model.addAttribute(vo);
 		service.updateHit(seq);
@@ -63,7 +80,9 @@ public class BoardController {
 	
 	
 	@GetMapping("/board/write")
-	public String write() {
+	public String write(String group, String cate, Model model) {
+		model.addAttribute("group", group);
+		model.addAttribute("cate",cate);
 		return "/board/write";
 	}
 	
@@ -74,7 +93,7 @@ public class BoardController {
 		vo.setRegip(regip);
 		
 		// 작성글 Insert
-		int seq = 0;
+		int seq = 0;	
 
 		if(vo.getFname().isEmpty()) {
 			// 파일을 첨부 안했을때
@@ -98,17 +117,22 @@ public class BoardController {
 	    service.fileDownload(resp, fileVo);
 	}
 	
-	@GetMapping("/modify")
-	public String modify(int seq, Model model) {
+	@GetMapping("/board/modify")
+	public String modify(int seq, Model model,String group,String cate) {
+		model.addAttribute("group", group);
+		model.addAttribute("cate",cate);
+		
 		ArticleVo vo = service.selectArticle(seq);
 		model.addAttribute(vo);		
-		return "/modify";
+		return "/board/modify";
 	}
 	
-	@PostMapping("/modify")
-	public String modify(HttpServletRequest req, ArticleVo vo) {
-		int seq = vo.getSeq();
+	@PostMapping("/board/modify")
+	public String modify(HttpServletRequest req, ArticleVo vo,String group,String cate,Model model) {
 		
+		int seq = vo.getSeq();
+		model.addAttribute("group", group);
+		model.addAttribute("cate",cate);
 		if(vo.getFname().isEmpty()) {
 			// 파일을 첨부 안했을때
 			vo.setFile(0);
@@ -121,15 +145,15 @@ public class BoardController {
 			service.insertFile(fvo);
 		}
 		
-		return "redirect:/view?seq="+seq;
+		return "redirect:/board/view?group="+group+"&cate="+cate+"&seq="+seq;
 	}
 	
 	
 	
 	@GetMapping("/delete")
-	public String delete(int seq, Model model) {
+	public String delete(int seq,String group,String cate) {
 		service.deleteArticle(seq);
-		return "redirect:/list";
+		return "redirect:/board/list?group="+group+"&cate="+cate;
 	}
 	
 	@PostMapping("/delete")
