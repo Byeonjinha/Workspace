@@ -11,16 +11,26 @@ import kr.co.sboard.vo.FileVo;
 public interface BoardDao {
 	
 	public int insertArticle(ArticleVo vo);
+	public int insertComment(ArticleVo vo);
+	
 	public void insertFile(FileVo vo);
 	
 	public ArticleVo selectArticle(int seq);
+	public ArticleVo selectComment(int seq);
 	public List<ArticleVo> selectArticles(int start);
+	public List<ArticleVo> selectComments(int start);
+	
 	public int selectCountTotal();
 	public FileVo selectFile(int fseq);
 	
 	
-	public void updateArticle(int seq);
+	public int updateArticle(ArticleVo vo);
 	public void updateFileDownload(int fseq);
+	public void updateHit(int seq);
+	public void updateCommentCountPlus(int seq);
+	public void updateCommentCountMinus(int seq);
+	
 	
 	public void deleteArticle(int seq);
+	
 }

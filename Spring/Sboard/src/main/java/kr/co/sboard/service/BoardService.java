@@ -28,6 +28,10 @@ public class BoardService {
 		dao.insertArticle(vo);
 		return vo.getSeq();
 	}
+	public int insertComment(ArticleVo vo) {
+		dao.insertComment(vo);
+		return vo.getSeq();
+	}
 	
 	public void insertFile(FileVo vo) {
 		dao.insertFile(vo);
@@ -36,9 +40,18 @@ public class BoardService {
 	public ArticleVo selectArticle(int seq) {
 		return dao.selectArticle(seq);
 	}
+	public ArticleVo selectComment(int seq) {
+		return dao.selectComment(seq);
+	}
 	public List<ArticleVo> selectArticles(int start) {
 		return dao.selectArticles(start);	
 	}
+	
+	public List<ArticleVo> selectComments(int start) {
+		return dao.selectComments(start);
+	}
+	
+	
 	public int selectCountTotal() {
 		return dao.selectCountTotal();
 	}
@@ -48,18 +61,26 @@ public class BoardService {
 	}
 	
 	
-	public void updateArticle(int seq) {
-		dao.updateArticle(seq);
+	public int updateArticle(ArticleVo vo) {
+		dao.updateArticle(vo);
+		return vo.getSeq();
 	}
 	public void updateFileDownload(int fseq) {
 		dao.updateFileDownload(fseq);
 	}
-	
-	
+	public void updateHit(int seq) {
+		dao.updateHit(seq);
+	}
+	public void updateCommentCountPlus(int seq) {
+		dao.updateCommentCountPlus(seq);
+	}
+	public void updateCommentCountMinus(int seq) {
+		dao.updateCommentCountMinus(seq);
+	}
 	public void deleteArticle(int seq) {
 		dao.deleteArticle(seq);
 	}
-	
+
 	//////////////////// 비즈니스 처리 로직 구현 메서드 //////////////////// 
 	// 파일 업로드
 	public FileVo fileUpload(MultipartFile fname, int seq) {

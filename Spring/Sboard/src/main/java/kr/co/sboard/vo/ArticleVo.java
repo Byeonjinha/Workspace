@@ -10,7 +10,7 @@ import lombok.Setter;
 public class ArticleVo {
 	private int seq;
 	private int parent;
-	private int comment;
+	private	String comment;
 	private String cate;
 	private String title;
 	private String content;

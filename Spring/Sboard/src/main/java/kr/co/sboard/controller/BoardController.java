@@ -68,16 +68,22 @@ public class BoardController {
 	
 	@GetMapping("/view")
 	public String view(int seq, Model model) {
-		
-		
-		
-		
-		
-		
+	
 		ArticleVo vo = service.selectArticle(seq);
-		model.addAttribute(vo);		
+		model.addAttribute(vo);
+		service.updateHit(seq);
+		List<ArticleVo> comments = service.selectComments(seq);
+		model.addAttribute("comments", comments);
 		return "/view";
 	}
+	@PostMapping("/view")
+	public String Comment(HttpServletRequest req, ArticleVo vo) {
+		int seq = vo.getSeq();
+		service.insertComment(vo);
+		service.updateCommentCountPlus(seq);
+		return "redirect:/view?seq="+seq;
+	}
+	
 	
 	@GetMapping("/write")
 	public String write() {
@@ -115,8 +121,6 @@ public class BoardController {
 	    service.fileDownload(resp, fileVo);
 	}
 	
-	
-	
 	@GetMapping("/modify")
 	public String modify(int seq, Model model) {
 		ArticleVo vo = service.selectArticle(seq);
@@ -126,41 +130,47 @@ public class BoardController {
 	
 	@PostMapping("/modify")
 	public String modify(HttpServletRequest req, ArticleVo vo) {
+		int seq = vo.getSeq();
 		
-		String regip = req.getRemoteAddr();
-		vo.setRegip(regip);
-		int seq = 0;
-
 		if(vo.getFname().isEmpty()) {
+			// 파일을 첨부 안했을때
 			vo.setFile(0);
-			seq = service.insertArticle(vo);
+			seq = service.updateArticle(vo);
 		}else {
+			// 파일을 첨부 했을때
 			vo.setFile(1);
-			seq = service.insertArticle(vo);
+			seq = service.updateArticle(vo);
 			FileVo fvo = service.fileUpload(vo.getFname(), seq);
-			service.updateArticle(seq);
+			service.insertFile(fvo);
 		}
 		
-		return "redirect:/view";
+		return "redirect:/view?seq="+seq;
 	}
+	
+	
 	
 	@GetMapping("/delete")
 	public String delete(int seq, Model model) {
-		ArticleVo vo = service.selectArticle(seq);
-		model.addAttribute(vo);		
-		return "/delete";
+		service.deleteArticle(seq);
+		return "redirect:/list";
 	}
 	
 	@PostMapping("/delete")
 	public String delete(HttpServletRequest req, ArticleVo vo) {
-		
-		String regip = req.getRemoteAddr();
-		vo.setRegip(regip);
-		int seq = 0;
 
 		return "redirect:/list";
 	}
 	
+	
+	@GetMapping("/deleteComment")
+	public String deleteComment(int seq, Model model) {
+		ArticleVo vo = service.selectArticle(seq);
+		int parent = vo.getParent();
+		model.addAttribute(vo);		
+		service.deleteArticle(seq);
+		service.updateCommentCountMinus(parent);
+		return "redirect:/view?seq="+parent;
+	}
 	
 	
 }
