@@ -47,6 +47,7 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public String list(String pg, Model model) {
+		
 		int currentPage = service.getCurrentPage(pg);
 		int start = service.getLimitStart(currentPage);
 		int total = service.selectCountTotal();
@@ -150,6 +151,8 @@ public class BoardController {
 	
 	@GetMapping("/delete")
 	public String delete(int seq, Model model) {
+		ArticleVo vo = service.selectArticle(seq);
+		model.addAttribute(vo);		
 		service.deleteArticle(seq);
 		return "redirect:/list";
 	}

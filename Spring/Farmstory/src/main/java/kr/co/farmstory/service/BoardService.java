@@ -46,6 +46,26 @@ public class BoardService {
 	public List<ArticleVo> selectArticles(int start, String cate) {
 		return dao.selectArticles(start, cate);	
 	}
+	public List<ArticleVo> selectArticles_Grow_5() {
+		return dao.selectArticles_Grow_5();	
+	}
+	public List<ArticleVo> selectArticles_Story_5() {
+		return dao.selectArticles_Story_5();	
+	}
+	public List<ArticleVo> selectArticles_School_5() {
+		return dao.selectArticles_School_5();	
+	}
+	
+	public List<ArticleVo> selectArticles_Qna_3() {
+		return dao.selectArticles_Qna_3();	
+	}
+	public List<ArticleVo> selectArticles_Faq_3() {
+		return dao.selectArticles_Faq_3();	
+	}
+	public List<ArticleVo> selectArticles_Notice_3() {
+		return dao.selectArticles_Notice_3();	
+	}
+	
 	
 	public List<ArticleVo> selectComments(int start) {
 		return dao.selectComments(start);
@@ -71,12 +91,18 @@ public class BoardService {
 	public void updateHit(int seq) {
 		dao.updateHit(seq);
 	}
+	public int updateComment(ArticleVo vo) {
+		dao.updateComment(vo);
+		return vo.getSeq();
+	}
 	public void updateCommentCountPlus(int seq) {
 		dao.updateCommentCountPlus(seq);
 	}
 	public void updateCommentCountMinus(int seq) {
 		dao.updateCommentCountMinus(seq);
 	}
+	
+	
 	public void deleteArticle(int seq) {
 		dao.deleteArticle(seq);
 	}

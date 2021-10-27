@@ -33,6 +33,9 @@
                         </tr>
                     </table>
                     <div>
+                    	
+                        <input type="hidden" name="cate" th:value=${cate}>
+                		<input type="hidden" name="group" th:value=${group}>
                         <a th:href="@{/board/view(group=${group},cate=${cate},seq=${articleVo.seq})}" class="btnCancel">취소</a>
                         <input type="submit"  class="btnWrite" value="수정완료">
                     </div>

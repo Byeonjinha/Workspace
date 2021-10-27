@@ -42,93 +42,33 @@
                     <a href="#"><img src="./img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
                     <img src="./img/main_latest1_img.jpg" alt="이미지"/>
                     <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+              
+                      <tr th:each="article, i:${articles_Grow}">
+                      <td><a name="title" th:href="@{/board/view(group=Croptalk,cate=grow,seq=${article.seq})}">[[${article.title}]]</a></td>
+                        <td>[[${article.rdate.substring(2, 10)}]]</td>
+                    </tr>
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="./img/main_latest2_tit.png" alt="귀농학교"/></a>
                     <img src="./img/main_latest2_img.jpg" alt="이미지"/>
                     <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+              
+                      <tr th:each="article, i:${articles_School}">
+                      <td><a name="title" th:href="@{/board/view(group=Croptalk,cate=story,seq=${article.seq})}">[[${article.title}]]</a></td>
+                        <td>[[${article.rdate.substring(2, 10)}]]</td>
+                    </tr>
                     </table>
                 </div>
                 <div>
                     <a href="#"><img src="./img/main_latest3_tit.png" alt="농작물 이야기"/></a>
                     <img src="./img/main_latest3_img.jpg" alt="이미지"/>
                     <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
+              
+                      <tr th:each="article, i:${articles_Story}">
+                      <td><a name="title" th:href="@{/board/view(group=Croptalk,cate=story,seq=${article.seq})}">[[${article.title}]]</a></td>
+                        <td>[[${article.rdate.substring(2, 10)}]]</td>
+                    </tr>
                     </table>
                 </div>
                 
@@ -137,6 +77,10 @@
             <div class="info">
                 <div>
                     <img src="./img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
+
+
+
+
 
                 </div>
                 <div>
@@ -158,23 +102,23 @@
                         </ul>
                         <div id="tabs-1">
                             <ul>
-                                <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                                <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                                <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
+                            <li th:each="article, i:${articles_Notice}">
+        						<a name="title" th:href="@{/board/view(group=Community,cate=notice,seq=${article.seq})}">[[${article.title}]]</a>
+                    		</li>
                             </ul>
                         </div>
                         <div id="tabs-2">
                             <ul>
-                                <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                                <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                                <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
+                               <li th:each="article, i:${articles_Qna}">
+        						<a name="title" th:href="@{/board/view(group=Community,cate=qna,seq=${article.seq})}">[[${article.title}]]</a>
+                    		</li>
                             </ul>
                         </div>
                         <div id="tabs-3">
                             <ul>
-                                <li>· 홈페이지를 오픈하였습니다.</li>
-                                <li>· 홈페이지를 오픈하였습니다.</li>
-                                <li>· 홈페이지를 오픈하였습니다.</li>
+                                 <li th:each="article, i:${articles_Faq}">
+        						<a name="title" th:href="@{/board/view(group=Community,cate=faq,seq=${article.seq})}">[[${article.title}]]</a>
+                    		</li>
                             </ul>
                         </div>
                     </div>

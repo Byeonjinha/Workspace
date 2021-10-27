@@ -7,13 +7,56 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
        <script>
- 		
-      
  			$(document).ready(function(){
- 			if ($('div article').length != 0 ){
+ 			if ($('div .comment').length != 0 ){
    			 $('p[name=empty]').hide();
  			}
+ 			$('a[name=commentModify]').click(function(){
+ 				
+ 				if ($(event.target).text()=='수정') {
+	
+	 				$(event.target).text('수정완료');
+	 				$(event.target).parents("div").prev().attr('readonly', false);
+					$(event.target).parents("div").prev().css({
+										'backgroundColor': '#ffffff',
+										'border': '1px solid #e4eaec'});	
+ 				}else {
+		 			$(event.target).html('수정');
+	 				$(event.target).parents("div").prev().attr('readonly', true);
+	 				$(event.target).parents("div").prev().css({
+										'backgroundColor': '#f9f9f9',
+										'border': '1px solid #f9f9f9'});
+	 				var text = ($(event.target).parents("div").prev().val());
+	 				var parent = ($(event.target).parents("div").prev().prev().val());
+	 				var seq = ($(event.target).parents("div").prev().prev().prev().val());
+	 				var cate = ($(event.target).parents("div").prev().prev().prev().prev().val());
+	 				var group = ($(event.target).parents("div").prev().prev().prev().prev().prev().val());
+	 				var jsonData = {
+						'seq': seq, 
+						'parent': parent, 
+						'cate': cate, 
+						'group': group, 
+						'content': text		
+					};
+	 				
+	 				$.ajax({
+						url:'/modifyComment',
+						type:'post',
+						data: jsonData,
+						dataType: 'json',
+						success: function(data){	}
+					});
+	 				
+ 				}
+ 				
+ 				return false;
+ 			});
+ 			
+ 			
+ 			
   		    });
+ 			
+ 			
  			
     </script>
 </head>
@@ -38,31 +81,39 @@
                 <tr>
                     <td>내용</td>
                     <td>
-                        <textarea name="content" readonly>[[${articleVo.content}]]</textarea>
+                        <textarea class="commentText" name="content" readonly>[[${articleVo.content}]]</textarea>
                     </td>
                 </tr>
             </table>
-            <div>
-                 <a th:href="@{/delete(group=${group},cate=${cate},seq=${articleVo.seq})}" class="btnDelete">삭제</a>
-                <a th:href="@{/board/modify(group=${group},cate=${cate},seq=${articleVo.seq})}" class="btnModify">수정</a>
+           <div >
+           
+                 <a th:if=${articleVo.uid==session.sessMember.uid} th:href="@{/delete(group=${group},cate=${cate},seq=${articleVo.seq})}" class="btnDelete">삭제</a>
+                <a th:if=${articleVo.uid==session.sessMember.uid}  th:href="@{/board/modify(group=${group},cate=${cate},seq=${articleVo.seq})}"                           class="btnModify">수정</a>
                 <a th:href="@{/board/list(group=${group},cate=${cate})}" class="btnList">목록</a>
+                
             </div>  
             
             <!-- 댓글리스트 -->
             <section class="commentList">
                 <h3>댓글목록</h3>
-                <article class="comment">
+                 <article th:each="comment, i:${comments}" class="comment">
                     <span>
-                        <span>길동이</span>
-                        <span>20-05-13</span>
+                        <span>[[${comment.nick}]]</span>
+                        <span>[[${comment.rdate.substring(2, 10)}]]</span>
                     </span>
-                    <textarea name="comment" readonly>댓글 샘플입니다.</textarea>
-                    <div>
-                        <a href="#">삭제</a>
-                        <a href="#">수정</a>
-                    </div>
+                 	<input type="hidden" th:value="${group}"/>
+		        	<input type="hidden" th:value="${cate}"/>
+		        	<input type="hidden" th:value="${comment.seq}"/>
+		      		<input type="hidden" th:value="${comment.parent}"/>
+		      		
+                    <textarea name="content" readonly>[[${comment.content}]]</textarea>
+                    <div th:if=${comment.uid==session.sessMember.uid}>
+                
+                        <a th:href="@{/deleteComment(group=${group},cate=${cate},seq=${comment.seq})}">삭제</a>
+                        <a th:href="@{/modifyComment(group=${group},cate=${cate},seq=${comment.seq},parent=${comment.parent})}" name = "commentModify" >수정</a>
+                    </div>               
                 </article>
-                 <p name="empty" class="empty">
+                  <p name="empty" class="empty">
                     등록된 댓글이 없습니다.
                 </p>
             </section>
@@ -70,17 +121,22 @@
             <!-- 댓글입력폼 -->
             <section class="commentForm">
                 <h3>댓글쓰기</h3>
-                <form action="#">
-                    <textarea name="comment"></textarea>
+          		<form th:action="@{view}" method="post" enctype="multipart/form-data">
+        	
+                <input type="hidden" name="group" th:value="${group}"/>
+		        <input type="hidden" name="cate" th:value="${cate}"/>
+                <input type="hidden" name="uid" th:value="${session.sessMember.uid}"/>
+		        <input type="hidden" name="seq" th:value="${articleVo.seq}"/>
+			          
+                    <textarea name="content"></textarea>
                     <div>
-                        <a href="#" class="btnCancel">취소</a>
+                        <a th:href="@{/board/view(group=${group}, cate=${cate},seq=${articleVo.seq})}" class="btnCancel">취소</a>
                         <input type="submit" class="btnWrite" value="작성완료"/>
                     </div>
                 </form>
             </section>
         </section>
         <!-- 내용 끝 -->
-                </article>
             </section>
         </div>
     	<th:block th:include="/_footer.html"></th:block>

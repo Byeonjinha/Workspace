@@ -18,6 +18,14 @@ public interface BoardDao {
 	public ArticleVo selectArticle(int seq);
 	public ArticleVo selectComment(int seq);
 	public List<ArticleVo> selectArticles(int start , String cate);
+	public List<ArticleVo> selectArticles_Grow_5();
+	public List<ArticleVo> selectArticles_Story_5();
+	public List<ArticleVo> selectArticles_School_5();
+	
+	public List<ArticleVo> selectArticles_Notice_3();
+	public List<ArticleVo> selectArticles_Qna_3();
+	public List<ArticleVo> selectArticles_Faq_3();
+	
 	public List<ArticleVo> selectComments(int start);
 	
 	public int selectCountTotal(String cate);
@@ -27,6 +35,7 @@ public interface BoardDao {
 	public int updateArticle(ArticleVo vo);
 	public void updateFileDownload(int fseq);
 	public void updateHit(int seq);
+	public void updateComment(ArticleVo vo);
 	public void updateCommentCountPlus(int seq);
 	public void updateCommentCountMinus(int seq);
 	

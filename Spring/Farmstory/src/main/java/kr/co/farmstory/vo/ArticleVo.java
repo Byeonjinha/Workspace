@@ -11,6 +11,7 @@ public class ArticleVo {
 	private int seq;
 	private int parent;
 	private	String comment;
+	private String group;
 	private String cate;
 	private String title;
 	private String content;

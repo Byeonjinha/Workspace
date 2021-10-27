@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+       <script>
+      $(document).ready(function(){
+		if ($(location).attr('href')=='http://localhost:8080/member/login?success=100'){
+		alert( '아이디, 비밀번호가 일치하지 않습니다.' );
+		}
+	});
+    </script>
+    
+    
     <meta charset="UTF-8">
     <title>로그인</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>

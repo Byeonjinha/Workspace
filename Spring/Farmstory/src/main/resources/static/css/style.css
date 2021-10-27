@@ -116,6 +116,7 @@ main > div {
     margin-top: 10px;
 }
 
+
 /* 메인 - slider */
 main > .slider {
     position: relative;
@@ -227,6 +228,10 @@ main > .info > div {
     float: left;
     height: 100%;
 }
+
+
+
+
 main > .info > div:nth-child(1) {
     width: 386px;
 }

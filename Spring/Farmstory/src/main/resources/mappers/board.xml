@@ -10,6 +10,7 @@
 		`file`=#{file},
 		`uid`=#{uid},
 		`regip`=#{regip},
+		`cate`=#{cate},
 		`rdate`=NOW();	
 	</insert>
 	
@@ -63,6 +64,53 @@
 		ORDER BY `seq` DESC
 		LIMIT #{start}, 10;
 	</select>	
+	
+	<select id="selectArticles_Story_5" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'story'
+		ORDER BY `seq` DESC
+		LIMIT 5;
+	</select>	
+	<select id="selectArticles_School_5" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'school'
+		ORDER BY `seq` DESC
+		LIMIT 5;
+	</select>	
+	<select id="selectArticles_Grow_5" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'grow'
+		ORDER BY `seq` DESC
+		LIMIT 5;
+	</select>	
+	<select id="selectArticles_Notice_3" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'notice'
+		ORDER BY `seq` DESC
+		LIMIT 3;
+	</select>	
+	<select id="selectArticles_Qna_3" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'qna'
+		ORDER BY `seq` DESC
+		LIMIT 5;
+	</select>	
+	<select id="selectArticles_Faq_3" resultType="kr.co.farmstory.vo.ArticleVo">
+		SELECT a.*, b.nick FROM `Jboard_article` AS a
+		JOIN `Jboard_member` AS b ON a.uid=b.uid 
+		WHERE `parent`=0 AND `cate` = 'faq'
+		ORDER BY `seq` DESC
+		LIMIT 5;
+	</select>	
+	
+	
+	
+	
 	<select id="selectComments" resultType="kr.co.farmstory.vo.ArticleVo">
 		SELECT a.*, b.nick FROM `Jboard_article` AS a
 		JOIN `Jboard_member` AS b ON a.uid=b.uid 
@@ -76,7 +124,7 @@
 	</select>
 	
 	<select id="selectFile" resultType = "kr.co.farmstory.vo.FileVo">
-		SELECT * FROM `Jboard_file` WHERE `parent`= #{seq}
+			SELECT * FROM `Jboard_file` WHERE `fseq`=#{fseq};
 		
 	</select>
 	
@@ -93,6 +141,11 @@
 	<update id="updateHit">
 	UPDATE `Jboard_article` SET `hit`=`hit`+1 WHERE `seq`=#{seq};
 	</update>
+	<update id="updateComment">
+		UPDATE `Jboard_article` SET
+		`content`= #{content}
+		 WHERE `seq`=#{seq};</update>
+	
 	<update id="updateCommentCountPlus">
 	UPDATE `Jboard_article` SET `comment`=`comment`+1 WHERE `seq`=#{seq};
 	</update>

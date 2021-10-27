@@ -38,6 +38,7 @@ public class BoardController {
 		public String list(String group, String cate, Model model,String pg) {
 		int currentPage = service.getCurrentPage(pg, cate);
 		int start = service.getLimitStart(currentPage);
+	
 		List<ArticleVo> articles = service.selectArticles(start,cate);
 		
 		int total = service.selectCountTotal(cate);
@@ -72,10 +73,12 @@ public class BoardController {
 	}
 	@PostMapping("/board/view")
 	public String Comment(HttpServletRequest req, ArticleVo vo) {
+		String group = vo.getGroup();
+		String cate = vo.getCate();
 		int seq = vo.getSeq();
 		service.insertComment(vo);
 		service.updateCommentCountPlus(seq);
-		return "redirect:/board/view?seq="+seq;
+		return "redirect:/board/view?group="+group+"&cate="+cate+"&seq="+seq;
 	}
 	
 	
@@ -91,7 +94,8 @@ public class BoardController {
 		
 		String regip = req.getRemoteAddr();
 		vo.setRegip(regip);
-		
+		String cate = vo.getCate();
+		String group = vo.getGroup();
 		// 작성글 Insert
 		int seq = 0;	
 
@@ -107,12 +111,13 @@ public class BoardController {
 			service.insertFile(fvo);
 		}
 		
-		return "redirect:/board/list";
+		return "redirect:/board/list?group="+group+"&cate="+cate;
 	}
 	
 	@GetMapping("/fileDownload")
 	public void fileDownload(int fseq, HttpServletResponse resp) {
 		service.updateFileDownload(fseq);
+		System.out.println("다운로드됨"+fseq);
 		FileVo fileVo =service.selectFile(fseq);
 	    service.fileDownload(resp, fileVo);
 	}
@@ -147,7 +152,17 @@ public class BoardController {
 		
 		return "redirect:/board/view?group="+group+"&cate="+cate+"&seq="+seq;
 	}
-	
+	@PostMapping("/modifyComment")
+	public String modifyComment(HttpServletRequest req, ArticleVo vo) {
+		String content = vo.getContent();
+		String group = vo.getGroup();
+		String cate = vo.getCate();
+		int seq = vo.getSeq();
+		int parent = vo.getParent();
+		service.updateComment(vo);
+
+		return "redirect:/board/view?group="+group+"&cate="+cate+"&seq="+parent;
+	}
 	
 	
 	@GetMapping("/delete")
@@ -164,13 +179,13 @@ public class BoardController {
 	
 	
 	@GetMapping("/deleteComment")
-	public String deleteComment(int seq, Model model) {
+	public String deleteComment(int seq, Model model,String group,String cate) {
 		ArticleVo vo = service.selectArticle(seq);
 		int parent = vo.getParent();
 		model.addAttribute(vo);		
 		service.deleteArticle(seq);
 		service.updateCommentCountMinus(parent);
-		return "redirect:/view?seq="+parent;
+		return "redirect:/board/view?group="+group+"&cate="+cate+"&seq="+parent;
 	}
 	
 	
