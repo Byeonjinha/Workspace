@@ -7,6 +7,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
        <script>
+       		var ctxPath = '/Farmstory';
+       
  			$(document).ready(function(){
  			if ($('div .comment').length != 0 ){
    			 $('p[name=empty]').hide();
@@ -40,7 +42,7 @@
 					};
 	 				
 	 				$.ajax({
-						url:'/modifyComment',
+						url:ctxPath+'/modifyComment',
 						type:'post',
 						data: jsonData,
 						dataType: 'json',
@@ -63,7 +65,7 @@
 <body>
     <div id="wrapper">
     	<th:block th:include="/_header.html"></th:block>
-    	<th:block th:include="@{/board/_aside__${group}__.html}"></th:block>
+    	<th:block th:include="/board/_aside__${group}__.html"></th:block>
         <section id="board" class="view">
             <h3>글보기</h3>
             <table>

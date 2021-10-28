@@ -14,6 +14,8 @@ var isPassOk = false;
 var isNameOk = false;
 var isNickOk = false;
 var isEmailOk = false;
+var ctxPath = '/Farmstory';
+
 $(document).ready(function(){
 	// 아이디 중복 체크 
 	$('input[name=uid]').focusout(function(){
@@ -24,7 +26,7 @@ $(document).ready(function(){
 				var jsonData = {'uid':uid};
 				// Ajax 통신
 				$.ajax({
-					url: '/member/checkUid',
+					url: ctxPath+'/member/checkUid',
 					type: 'GET',
 					data: jsonData,
 					dataType: 'json',
@@ -96,7 +98,7 @@ $(document).ready(function(){
 				
 		var jsonData = {'nick':nick};
 			$.ajax({
-			url: '/member/checkNick',
+			url: ctxPath+'/member/checkNick',
 			type: 'GET',
 			data: jsonData,
 			dataType: 'json',
@@ -127,7 +129,7 @@ $(document).ready(function(){
 		var email = $(this).val();
 		var jsonData = {'email':email};
 		$.ajax({
-			url: '/member/checkEmail',
+			url: ctxPath+'/member/checkEmail',
 			type: 'GET',
 			data: jsonData,
 			dataType: 'json',
@@ -158,7 +160,7 @@ $(document).ready(function(){
 		var hp = $(this).val();
 		var jsonData = {'hp':hp};
 		$.ajax({
-			url: '/member/checkHp',
+			url: ctxPath+'/member/checkHp',
 			type: 'GET',
 			data: jsonData,
 			dataType: 'json',

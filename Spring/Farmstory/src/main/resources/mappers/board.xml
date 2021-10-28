@@ -77,7 +77,7 @@
 		JOIN `Jboard_member` AS b ON a.uid=b.uid 
 		WHERE `parent`=0 AND `cate` = 'school'
 		ORDER BY `seq` DESC
-		LIMIT 5;
+LIMIT 5;
 	</select>	
 	<select id="selectArticles_Grow_5" resultType="kr.co.farmstory.vo.ArticleVo">
 		SELECT a.*, b.nick FROM `Jboard_article` AS a
