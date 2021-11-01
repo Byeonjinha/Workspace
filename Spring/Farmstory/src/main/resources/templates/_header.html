@@ -7,8 +7,7 @@
         <a th:href="@{/member/terms}">회원가입 |</a>
         </th:block>
           <th:block th:if = "${session.sessMember} != null">
-
-            [[${session.sessMember.nick}]] 님 반갑습니다. |
+            [[${session.sessMember}]] 님 반갑습니다. |
             <a th:href="@{/member/logout}" class="logout">로그아웃 |</a>
  
         </th:block>

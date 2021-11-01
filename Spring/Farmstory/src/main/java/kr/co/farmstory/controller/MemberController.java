@@ -30,7 +30,6 @@ public class MemberController {
 	
 	@PostMapping("/member/login")
 	public String login(HttpSession sess, String uid, String pass) {
-		
 		MemberVo vo = service.selectMember(uid, pass);
 		
 		if(vo == null) {
