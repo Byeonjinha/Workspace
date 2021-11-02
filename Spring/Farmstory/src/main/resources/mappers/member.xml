@@ -18,7 +18,7 @@
 			`rdate`=NOW();
 	</insert>
 	<select id="selectTerms" resultType="kr.co.farmstory.vo.TermsVo">
-		SELECT * FROM `Jboard_terms`;
+		SELECT * FROM `km_terms` ;
 	</select>
 	
 	<select id="selectMember" resultType="kr.co.farmstory.vo.MemberVo">

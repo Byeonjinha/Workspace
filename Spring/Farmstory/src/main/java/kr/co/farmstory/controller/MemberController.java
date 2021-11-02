@@ -51,7 +51,7 @@ public class MemberController {
 	
 	@GetMapping("/member/terms")
 	public String terms(Model model) {
-		
+		System.out.println("실행1");
 		TermsVo vo = service.selectTerms();
 		model.addAttribute(vo);
 		

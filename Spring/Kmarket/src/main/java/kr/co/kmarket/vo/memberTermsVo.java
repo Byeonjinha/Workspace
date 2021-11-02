@@ -5,7 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TermsVo {
+public class memberTermsVo {
 	private String terms;
 	private String privacy;
+	private String finance;
+	private String tax;
+	private String location;
 }

@@ -11,6 +11,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script>
+        $(document).ready(function(){
+          $('.slider > ul').bxSlider({
+              pager: false,
+              easing: 'linear'
+          });
+        });
+      
+      $(function(){
+
+        var best = $('aside > .best');
+
+        $(window).scroll(function(){
+
+          var t = $(this).scrollTop();
+
+          if(t > 620){
+            best.css({
+              'position':'fixed',
+              'top': '0'
+            });
+          }else{
+            best.css({'position':'static'});
+          }
+        });
+      });
+    </script>
 </head>
 <body>
     <div id="wrapper">
@@ -197,7 +224,7 @@
                               </tr>
                               
                             </table>
-                            <input type="button" name="" value="결제하기">
+                            <input type="button" name="" value="결제하기\">
                 
                           </div>
                     </section>                

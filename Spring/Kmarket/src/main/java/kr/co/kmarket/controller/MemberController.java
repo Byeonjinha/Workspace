@@ -15,7 +15,7 @@ import com.google.gson.JsonObject;
 
 import kr.co.kmarket.service.MemberService;
 import kr.co.kmarket.vo.MemberVo;
-import kr.co.kmarket.vo.TermsVo;
+import kr.co.kmarket.vo.memberTermsVo;
 
 
 @Controller
@@ -36,16 +36,13 @@ public class MemberController {
 	@PostMapping("/member/login")
 	public String login(HttpSession sess, String km_uid, String km_pass) {
 		
-		System.out.println(km_uid+km_pass);
 		MemberVo vo = service.selectMember(km_uid, km_pass);
-		
 		if(vo == null) {
 			// 회원이 아닐 경우
 			return "redirect:/member/login?success=100";
 		}else {
 			// 회원이 맞을 경우
 			sess.setAttribute("sessMember", vo);
-			System.out.println(vo);
 			return "redirect:/index";
 		}
 	}
@@ -66,8 +63,8 @@ public class MemberController {
 	@PostMapping("/member/register")
 	public String register(MemberVo vo, HttpServletRequest req) {
 		
-		String regip = req.getRemoteAddr();
-		vo.setRegip(regip);
+		String ip = req.getRemoteAddr();
+		vo.setIp(ip);
 		
 		service.insertMember(vo);
 		
@@ -85,7 +82,8 @@ public class MemberController {
 	@GetMapping("/member/signup")
 	public String terms(Model model) {
 		
-		TermsVo vo = service.selectTerms();
+		memberTermsVo vo = service.selectTerms();
+		System.out.println("vo");
 		model.addAttribute(vo);
 		return "/member/signup";
 	}

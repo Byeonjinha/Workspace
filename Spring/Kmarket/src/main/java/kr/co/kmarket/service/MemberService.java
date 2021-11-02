@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.kmarket.dao.MemberDao;
 import kr.co.kmarket.vo.MemberVo;
-import kr.co.kmarket.vo.TermsVo;
+import kr.co.kmarket.vo.memberTermsVo;
 
 @Service
 public class MemberService {
@@ -19,7 +19,7 @@ public class MemberService {
 		dao.insertMember(vo);
 	}
 	
-	public TermsVo selectTerms() {
+	public memberTermsVo selectTerms() {
 		return dao.selectTerms();
 	}
 	
