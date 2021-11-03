@@ -5,40 +5,45 @@
 <mapper namespace="kr.co.kmarket.dao.MemberDao">
 	<insert id="insertMember">
 		INSERT INTO `km_member` SET
-			`uid`=#{km_uid},
-			`pass`=PASSWORD(#{km_pass1}),
-			`name`=#{km_name},
-			`gender`=#{km_gender},
-			`email`=#{km_email},
-			`hp`=#{km_hp},
-			`zip`=#{km_zip},
-			`addr1`=#{km_addr1},	
-			`addr2`=#{km_addr2},	
-			`ip`=#{regip},	
-			`rdate`=NOW();
+		`uid`=#{uid},
+		`pass`=PASSWORD(#{pass}),
+		`name`=#{name},
+		`gender`=#{gender},
+		`hp`=#{hp},
+		`email`=#{email},
+		`type`=#{type},
+		`zip`=#{zip},
+		`addr1`=#{addr1},
+		`addr2`=#{addr2},
+		`company`=#{company},
+		`ceo`=#{ceo},
+		`bizRegNum`=#{bizRegNum},
+		`commRepNum`=#{commRepNum},
+		`tel`=#{tel},
+		`manager`=#{manager},
+		`managerHp`=#{managerHp},
+		`fax`=#{fax},
+		`ip`=#{ip},
+		`rdate`=NOW(),
+		`etc1`=#{etc1},
+		`etc2`=#{etc2},
+		`etc3`=#{etc3},
+		`etc4`=#{etc4},
+		`etc5`=#{etc5};	
 	</insert>
-	<select id="selectTerms" resultType="kr.co.kmarket.vo.TermsVo">
-			SELECT * FROM `km_terms`;
-	</select>
-	
 	<select id="selectMember" resultType="kr.co.kmarket.vo.MemberVo">
-		SELECT * FROM `km_member` WHERE `uid`=#{km_uid} AND `pass`=PASSWORD(#{km_pass});	
+		SELECT * FROM `km_member` WHERE `uid`=#{uid} AND `pass`=PASSWORD(#{pass});
 	</select>
 	<select id="selectMembers"></select>
-	
-	<select id="selectCountUid" resultType="int">
-		SELECT COUNT(`uid`) FROM `km_member` WHERE `uid`=#{uid};
+	<select id="selectTerms" resultType="kr.co.kmarket.vo.MemberTermsVo">
+		SELECT * FROM `km_member_terms`;
 	</select>
-	<select id="selectCountNick" resultType="int">
-		SELECT COUNT(`nick`) FROM `km_member` WHERE `nick`=#{nick};
-	</select>
-	<select id="selectCountEmail" resultType="int">
-		SELECT COUNT(`email`) FROM `km_member` WHERE `email`=#{email};
-	</select>
-	<select id="selectCountHp" resultType="int">
-		SELECT COUNT(`hp`) FROM `km_member` WHERE `hp`=#{hp};
-	</select>
-	
 	<update id="updateMember"></update>
 	<delete id="deleteMember"></delete>
 </mapper>
+
+
+
+
+
+

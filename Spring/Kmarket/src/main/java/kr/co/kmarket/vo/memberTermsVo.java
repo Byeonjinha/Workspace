@@ -1,14 +1,12 @@
 package kr.co.kmarket.vo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class memberTermsVo {
+@Data
+public class MemberTermsVo {
 	private String terms;
 	private String privacy;
+	private String location;
 	private String finance;
 	private String tax;
-	private String location;
 }
