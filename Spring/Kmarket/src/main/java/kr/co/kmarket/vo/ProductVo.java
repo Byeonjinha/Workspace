@@ -1,5 +1,11 @@
 package kr.co.kmarket.vo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -36,4 +42,24 @@ public class ProductVo {
 	private String etc3;
 	private String etc4;
 	private String etc5;
+	
+	// 추가필드
+	private MultipartFile thumbFile1;
+	private MultipartFile thumbFile2;
+	private MultipartFile thumbFile3;
+	private MultipartFile detailFile4;
+	
+	public List<MultipartFile> getFiles() {
+		List<MultipartFile> files = Arrays.asList(thumbFile1, thumbFile2, thumbFile3, detailFile4);
+		return files;
+	}
 }
+
+
+
+
+
+
+
+
+
