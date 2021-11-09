@@ -16,7 +16,7 @@ a {text-decoration: none; color:rgb(145, 144, 144);}  /* text-decoration CSS 단
   padding-top: calc(10/1000*100%);
   background-image: url(../img/korea-g6bfd67397_1920.jpg); 
   background-attachment: fixed;
-  
+  color: #9b9b9b;
   background-size: cover;
   z-index: 0;
 }
@@ -89,8 +89,13 @@ main {
 - scroll : 스크롤바가 추가되어 스크롤할 수 있음 (가로, 세로 모두 추가)
 - auto : 컨텐츠 량에 따라 스크롤바를 추가할지 자동으로 결정( 필요에 따라 가로, 세로 별도로 추가될 수도 있음)
 */
-
 }
+
+
+
+
+
+
 
 /* main - aside 속성정의 */
 main > aside {    /* main > aside 선택  (카테고리리스트) */
