@@ -8,5 +8,6 @@ import lombok.Data;
 public class CategoriesVo {
 	private int cate1;
 	private String tit1;
+	private String tit2;
 	private List<ProductCate2Vo> cate2List;
 }

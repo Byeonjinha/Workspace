@@ -43,7 +43,12 @@ public class ProductVo {
 	private String etc4;
 	private String etc5;
 	
-	// 추가필드
+	//추가필드 I
+	private int salePrice;
+	private String tit1;
+	private String tit2;
+	
+	//추가필드 II
 	private MultipartFile thumbFile1;
 	private MultipartFile thumbFile2;
 	private MultipartFile thumbFile3;
