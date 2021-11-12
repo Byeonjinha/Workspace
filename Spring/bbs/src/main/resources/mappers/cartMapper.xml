@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.bbs.cartMapper">
+    
+    <select id="CartList" parameterType="com.shopping.bbs.form.cartForm" resultType="com.shopping.bbs.dto.cartDTO">
+    
+    	SELECT cartID,userID,CART.bbsID,amount,title,price
+    	FROM SHOPPING.CART, SHOPPING.BBS
+    	WHERE 	CART.bbsID = BBS.bbsID
+    	AND		userID = #{userID}
+		ORDER BY CART.bbsID DESC
+		LIMIT #{displayPost}, #{postNum}
+    
+    </select>    
+    
+    <select id="CartTotal" parameterType="com.shopping.bbs.form.cartForm" resultType="int">
+    
+    	SELECT COUNT(*)
+    	FROM SHOPPING.CART
+    	WHERE 	userID = #{userID}
+    	
+    </select>
+    
+    <select id="CartView" parameterType="com.shopping.bbs.form.cartForm" resultType="com.shopping.bbs.dto.cartDTO">
+    
+    	SELECT *
+    	FROM SHOPPING.CART
+        WHERE	bbsID = #{bbsID}    	
+    	AND		userID = #{userID}
+    </select>
+    
+    <select id="GetNext" parameterType="com.shopping.bbs.form.cartForm" resultType="com.shopping.bbs.dto.cartDTO">
+    	
+    	SELECT cartID
+    	FROM SHOPPING.CART
+    	ORDER BY cartID DESC;
+    
+    </select>
+              
+    <insert id="CartWrite" parameterType="com.shopping.bbs.form.cartForm">
+		
+		INSERT
+		INTO SHOPPING.CART
+		VALUES
+		(
+			#{cartID},	
+			#{userID},
+			#{bbsID},
+			#{amount},
+			0
+		) 
+  
+    </insert>
+        
+    <delete id="CartDelete" parameterType="com.shopping.bbs.form.cartForm">
+    
+    	DELETE
+    	FROM SHOPPING.CART
+    	WHERE cartID = #{cartID}
+    
+    </delete>
+    
+    <delete id="CartUpdate" parameterType="com.shopping.bbs.form.cartForm">
+    
+    	UPDATE SHOPPING.CART
+    	SET amount = #{amount}
+		WHERE 	bbsID = #{bbsID}
+		AND		userID = #{userID}
+		
+    </delete>
+    
+    <!-- 구매하는 신호 -->
+    <delete id="CartOrder" parameterType="com.shopping.bbs.form.cartForm">
+    
+    	UPDATE SHOPPING.CART
+    	SET isOrder = 1
+		WHERE 	bbsID = #{bbsID}
+		AND		userID = #{userID}
+		
+    </delete>
+    
+    <!-- view에서 직접 구매 -->
+     <insert id="ThisOrder" parameterType="com.shopping.bbs.form.cartForm">
+		
+		INSERT
+		INTO SHOPPING.CART
+		VALUES
+		(
+			#{cartID},	
+			#{userID},
+			#{bbsID},
+			#{amount},
+			1
+		) 
+  
+    </insert>
+    
+    <!-- 구매창에서 나갔을 때 리셋(장바구니)-->
+     <delete id="CartOrderReset" parameterType="com.shopping.bbs.form.cartForm">
+    
+    	UPDATE SHOPPING.CART
+    	SET isOrder = 0
+		WHERE 	isOrder = 1
+		AND		userID = #{userID}
+		
+    </delete>
+    
+    <!-- 구매창에서 나갔을 때 (bbsView)-->
+     <delete id="BbsOrderReset" parameterType="com.shopping.bbs.form.cartForm">
+    
+    	DELETE
+    	FROM SHOPPING.CART
+		WHERE 	isOrder = 1
+		AND		userID = #{userID}
+		
+    </delete>
+</mapper>

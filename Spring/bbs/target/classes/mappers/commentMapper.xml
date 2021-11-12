@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.bbs.commentMapper">
+    
+    <select id="CommentList" parameterType="com.shopping.bbs.form.commentForm" resultType="com.shopping.bbs.dto.commentDTO">
+    
+    	SELECT *
+    	FROM SHOPPING.COMMENT
+    	WHERE 	comCategory = #{comCategory}
+    	AND		bbsID = #{bbsID}
+		ORDER BY commentID ASC, subCommentID ASC
+		LIMIT #{displayPost}, #{postNum}
+    
+    </select>
+    
+    <select id="CommentTotal" parameterType="com.shopping.bbs.form.commentForm" resultType="int">
+    
+    	SELECT COUNT(*)
+    	FROM SHOPPING.COMMENT
+    	WHERE 	comCategory = #{comCategory}
+    	AND		bbsID = #{bbsID}
+    	
+    </select>
+    
+    
+    <select id="GetNext" parameterType="com.shopping.bbs.form.commentForm" resultType="com.shopping.bbs.dto.commentDTO">
+    	
+    	SELECT commentID
+    	FROM SHOPPING.COMMENT
+    	ORDER BY commentID DESC;
+    
+    </select>
+       
+    <select id="SubGetNext" parameterType="com.shopping.bbs.form.commentForm" resultType="com.shopping.bbs.dto.commentDTO">
+    	
+    	SELECT subCommentID
+    	FROM SHOPPING.COMMENT
+    	WHERE commentID = #{commentID}
+    	ORDER BY subCommentID DESC;
+    
+    </select>
+       
+    <insert id="CommentWrite" parameterType="com.shopping.bbs.form.commentForm">
+		
+		INSERT
+		INTO SHOPPING.COMMENT
+		VALUES
+		(
+			#{commentID},		
+			#{subCommentID},
+			#{bbsID},
+			#{comCategory},
+			#{userID},
+			#{content}
+		) 
+  
+    </insert>
+    
+    <select id="CommentView" parameterType="com.shopping.bbs.form.commentForm" resultType="com.shopping.bbs.dto.commentDTO">
+    
+    	SELECT *
+    	FROM SHOPPING.COMMENT
+        WHERE 	commentID = #{commentID}    
+        AND		subCommentID = #{subCommentID}	
+    
+    </select>
+    
+    <select id="UserReview" parameterType="com.shopping.bbs.form.commentForm" resultType="int">
+    
+		SELECT COUNT(*)
+		FROM SHOPPING.ITEMORDER,SHOPPING.ORDERITEMS
+		WHERE	ITEMORDER.userID=#{userID}
+		AND	ORDERITEMS.bbsID=#{bbsID}
+		AND	ITEMORDER.orderID=ORDERITEMS.orderID
+		AND ITEMORDER.delivery = "배송완료"
+    
+    </select>
+    
+    <delete id="CommentDelete" parameterType="com.shopping.bbs.form.commentForm">
+    
+    	DELETE
+    	FROM SHOPPING.COMMENT
+    	WHERE 	commentID = #{commentID}
+    	AND		subCommentID = #{subCommentID}
+    
+    </delete>
+    
+    <delete id="CommentUpdate" parameterType="com.shopping.bbs.form.commentForm">
+    
+    	UPDATE SHOPPING.COMMENT
+    	SET content = #{content}
+		WHERE 	commentID = #{commentID}
+		AND		subCommentID = #{subCommentID}
+    
+    </delete>
+</mapper>
